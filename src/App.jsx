@@ -1,8 +1,17 @@
+import { BrowserRouter, Routers, Route } from "react-router-dom"
+import DefaultLayout from "./Layout/DefaultLayout"
+
 
 function App() {
   return (
     <>
-      <h1>BUDINO</h1>
+      <BrowserRouter>
+        <Routers>
+          <Route element={<DefaultLayout />} />
+        </Routers>
+
+      </BrowserRouter>
+
     </>
   )
 }
