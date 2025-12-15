@@ -12,7 +12,9 @@ export default function Header() {
             <nav className="navbar navbar-expand-lg navbar-light bg-white py-3">
                 <div className="container px-5">
                     <a className="navbar-brand" href="#">
-                        <span className="fw-bolder text-primary">Rec-Review</span>
+                        <span className="fw-bolder text-dark">
+                            <h2>Rec-Review</h2>
+                        </span>
                     </a>
 
                     <button
