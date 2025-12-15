@@ -20,8 +20,30 @@ export default function Info() {
     return (
 
         <>
-            <h2>DETTAGLI DEL PRODOTTO</h2>
-            <p>{details.title}</p>
+
+            {/* locandina sulla sinistra */}
+            <div className="row align-items-md-stretch">
+                <div className="col-md-6">
+                    <div className="h-100 p-5 border rounded-3">
+                        <img src="" alt="" />
+                    </div>
+                </div>
+
+
+                {/* testo sulla destra */}
+                <div className="col-md-6">
+                    <div
+                        className="h-100 p-5 border rounded-3 text-center"
+                    >
+                        <h1>{details.title}</h1>
+                        <h5><italic>{details.abstract}</italic></h5>
+
+                    </div>
+                </div>
+            </div>
+
+            {/* <h2>DETTAGLI DEL PRODOTTO</h2>
+            <p>{details.title}</p> */}
 
         </>
     )
