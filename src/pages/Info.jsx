@@ -1,16 +1,16 @@
 import axios from "axios"
 import { useState, useEffect } from "react"
-//import { useParams, Link } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 
 export default function Info() {
 
-    //const { id } = useParams()
+    const { id } = useParams()
     const [details, seDetails] = useState({})
 
     function axiosCall() {
-        axios.get('http://localhost:3000/api/movies/1')
+        axios.get(`http://localhost:3000/api/movies/${id}`)
             .then((rispo) => seDetails(rispo.data))
-            .catch((err) => alert('michè non ti vuole davvero bene'))
+            .catch((err) => alert('dettagli del film in arrivo'))
 
     }
 
@@ -24,10 +24,10 @@ export default function Info() {
         vote: '',
     })
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     console.log('Dati inviati:', formData);
-    // }
+    const CreateReview = (e) => {
+        e.preventDefault();
+        console.log('Dati inviati:', formData);
+    }
 
     return (
 
@@ -37,7 +37,7 @@ export default function Info() {
             <div className="row align-items-md-stretch">
                 <div className="col-md-6">
                     <div className="h-100 p-5 border rounded-3">
-                        <img src="" alt="" />
+                        <img src={details.image} alt="" />
                     </div>
                 </div>
 
@@ -48,7 +48,7 @@ export default function Info() {
                         className="h-100 p-5 border rounded-3 text-center"
                     >
                         <h1>{details.title}</h1>
-                        <h5><italic>{details.abstract}</italic></h5>
+                        <h5>{details.abstract}</h5>
 
                     </div>
                 </div>
@@ -57,35 +57,27 @@ export default function Info() {
             <hr />
 
             {/* FORM */}
-            <form >
-                <div>
-                    <label>Name:</label>
-                    <input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                    />
-                </div>
+            <form action="" onSubmit={CreateReview}>
+                <label>
+                    <h3>nome autore</h3>
+                    <input name="author" type="text" onChange={(e) => setFormData({ ...formData, name: e.target.value })} />
+                </label>
 
-                <div>
-                    <label>your vote:</label>
-                    <input
-                        type="text"
-                        name="text"
-                        value={formData.text}
-                        onChange={handleChange}
-                    />
-                </div>
+                <label>
+                    <h3>your vote</h3>
+                    <select name="vote" onChange={(e) => setFormData({ ...formData, vote: e.target.value })}>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </label>
 
-                <div>
-                    <label>your review:</label>
-                    <textarea
-                        name="text"
-                        value={formData.messaggio}
-                        onChange={handleChange}
-                    />
-                </div>
+                <label>
+                    <h3>your review</h3>
+                    <textarea name="review" type="text" onChange={(e) => setFormData({ ...formData, text: e.target.value })} />
+                </label>
 
                 <button type="submit">Invia</button>
             </form>
