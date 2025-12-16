@@ -16,6 +16,18 @@ export default function Info() {
 
     useEffect(axiosCall, [])
 
+    // FORM
+
+    const [formData, setFormData] = useState({
+        name: '',
+        text: '',
+        vote: '',
+    })
+
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     console.log('Dati inviati:', formData);
+    // }
 
     return (
 
@@ -42,8 +54,41 @@ export default function Info() {
                 </div>
             </div>
 
-            {/* <h2>DETTAGLI DEL PRODOTTO</h2>
-            <p>{details.title}</p> */}
+            <hr />
+
+            {/* FORM */}
+            <form >
+                <div>
+                    <label>Name:</label>
+                    <input
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                    />
+                </div>
+
+                <div>
+                    <label>your vote:</label>
+                    <input
+                        type="text"
+                        name="text"
+                        value={formData.text}
+                        onChange={handleChange}
+                    />
+                </div>
+
+                <div>
+                    <label>your review:</label>
+                    <textarea
+                        name="text"
+                        value={formData.messaggio}
+                        onChange={handleChange}
+                    />
+                </div>
+
+                <button type="submit">Invia</button>
+            </form>
 
         </>
     )
